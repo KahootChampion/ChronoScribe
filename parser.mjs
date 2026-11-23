@@ -15,4 +15,25 @@ function parseMinuteEstimate(timeEstimate) {
   return timeEstimate.match(/\s*(\d+(?:\.?\d*)?)\s*(?:minutes?|mins?)/i);
 }
 
-export { parseTimeEntry, parseHourEstimate, parseMinuteEstimate };
+// Key: Description of task
+// Value: <Number> <Time Increment i.e mins, hours, etc.>
+function parseUserInput(userInput) {
+  const timeEntries = [];
+  for (const line of userInput) {
+    const timeEntry = {};
+    const parsingSucceeds = parseTimeEntry(line);
+    if (parsingSucceeds) {
+      timeEntry.description = parsingSucceeds[1].trim();
+      timeEntry.timeEstimate = parsingSucceeds[2].trim();
+      timeEntries.push(timeEntry);
+    }
+  }
+  return timeEntries;
+}
+
+export {
+  parseTimeEntry,
+  parseHourEstimate,
+  parseMinuteEstimate,
+  parseUserInput,
+};
