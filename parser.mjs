@@ -1,7 +1,7 @@
 // Parse a user input line containing a task description and time estimate
 function parseTimeEntry(line) {
   return line.match(
-    /^(.*)-(\s+\d+(?:\.?\d+?)?\s+(mins?|minutes?|hours?|hrs?)\s*)/i,
+    /^(.*)-(\s*\d+(?:\.?\d+?)?\s+(minutes?|mins?|hours?|hrs?)\s*)/i,
   );
 }
 
